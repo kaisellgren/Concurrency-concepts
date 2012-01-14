@@ -1,8 +1,8 @@
 # Concurrency, multi-threading and parallel programming concepts
 
-I wanted to understand concurrency, multi-threading, parallel programming and such concepts so I did some digging. **You are welcome to contribute to this document.**
+This document describes various concurrency, multi-threading, parallel programming methods and concepts.
 
-This document gives you the explanations for all types of concurrency, multi-threading or parallel programming concepts.
+**This document is meant to be read from beginning to end. You are welcome to contribute to this document.**
 
 *Note: This document mainly discuss modern OS and hardware.*
 
