@@ -85,3 +85,7 @@ Semaphores which allow an arbitrary resource count are called **counting semapho
 
 ## Events
 
+## TODO
+
+- Talk about different implementations of schedulers.
+- How virtual address space works.
