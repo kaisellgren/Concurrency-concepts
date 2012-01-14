@@ -4,7 +4,9 @@ This document describes various concurrency, multi-threading, parallel programmi
 
 **This document is meant to be read from beginning to end. You are welcome to contribute to this document.**
 
-*Note: This document mainly discuss modern OS and hardware.*
+*Note 1: This document mainly discusses modern OS and hardware.*
+
+*Note 2: While attention is paid to what is written here, there is no guarantee that this document is correct at its entirety.*
 
 ## [Processes](http://en.wikipedia.org/wiki/Process_(computing\))
 
