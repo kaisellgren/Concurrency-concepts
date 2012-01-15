@@ -1,18 +1,5 @@
 # Concurrency, multi-threading and parallel programming concepts
 
-[Click here to read the document.](https://github.com/kaisellgren/Concurrency-concepts/wiki/TOC)
+This document describes various concurrency, multi-threading, parallel programming methods and concepts. The purpose is to write a single document/wiki that contains everything you need to know about concurrency. Things should be explained clearly yet in as great detail as possible. **You are welcome to contribute to this document.**
 
-## TODO
-
-- Green threads
-- Events
-- Callbacks
-- Generators
-- Actors
-- Isolates
-- Coroutines
-- Goroutines
-- Fibers
-- Protothreads
-- Talk about different implementations of schedulers.
-- How virtual address space works.
+[Click here to read "Concurrency, multi-threading and parallel programming concepts".](https://github.com/kaisellgren/Concurrency-concepts/wiki/TOC)
