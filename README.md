@@ -2,6 +2,8 @@
 
 This document describes various concurrency, multi-threading, parallel programming methods and concepts. The purpose is to write a single document/wiki that contains everything you need to know about concurrency. Things should be explained clearly yet in as great detail as possible. **You are welcome to contribute to this document.**
 
+*If you are interested in contributing to this document, you can ask me to add you as a contributor or you can just fork this.*
+
 *Note 1: This document mainly discusses modern OS and hardware.*
 
 *Note 2: While attention is paid to what is written here, there is no guarantee that this document is correct at its entirety.*
@@ -270,7 +272,7 @@ Implementations of concurrent systems that use message passing can either have m
 
 Messages are also commonly used in the same sense as a means of inter-process communication; the other common technique being streams or pipes, in which data are sent as a sequence of elementary data items instead.
 
-# Synchronous vs asynchronous message passing
+#### Synchronous vs asynchronous message passing
 Synchronous message passing systems require the sender and receiver to wait for each other to transfer the message. That is, the sender will not continue until the receiver has received the message.
 
 Synchronous communication has two advantages. The first advantage is that reasoning about the program can be simplified in that there is a synchronisation point between sender and receiver on message transfer. The second advantage is that no buffering is required. The message can always be stored on the receiving side, because the sender will not continue until the receiver is ready.
