@@ -53,11 +53,11 @@ Like processes, threads are about [preemptive multitasking](http://en.wikipedia.
 
 Communication between threads is far simpler than [inter-process communication](http://en.wikipedia.org/wiki/Inter-process_communication) between processes. This is mainly due to the shared memory, but also due to the fact that the [strict security constraints](http://en.wikipedia.org/wiki/Process_isolation) the OS puts on processes do not exist with threads.
 
-# Memory usage
+#### Memory usage
 
 Threads are generally said to be "lightweight", but that is relative. Threads have to support the execution of [native code](http://en.wikipedia.org/wiki/Machine_code) so the OS has to provide a decent-sized [stack](http://en.wikipedia.org/wiki/Stack-based_memory_allocation), usually measured in megabytes. In Windows, the [default stack reservation size](http://msdn.microsoft.com/en-us/library/windows/desktop/ms686774(v=vs.85\).aspx) used by the linker is 1 MB. In Linux, the typical [thread stack size](http://www.kernel.org/doc/man-pages/online/pages/man3/pthread_create.3.html) is between 2 MB and 10 MB. This means that in Linux, creating 1000 threads would equal to memory usage from ~2 GB to ~10 GB, without even beginning to do any actual work with the threads.
 
-### Determining stack size on Linux
+##### Determining stack size on Linux
 You can rather easily determine the default stack size for Linux OS by running the following:
 ```
 $ ulimit -a | grep stack
@@ -96,7 +96,7 @@ int main()
 ```
 Running `pmap -x 1234` where `1234` is the PID will give us 10 x 8192K blocks allocated, because we created 10 threads and each of them got 8 MB allocated.
 
-### Setting the stack size
+##### Setting the stack size
 
 Thread default stack size varies depending on the OS and you can actually set it on your own. On Linux, you call [pthread_attr_setstacksize](http://www.kernel.org/doc/man-pages/online/pages/man3/pthread_attr_setstacksize.3.html) and on Windows it can be specified as a parameter to [CreateThread](http://msdn.microsoft.com/en-us/library/ms885186.aspx).
 
@@ -104,21 +104,21 @@ The number of threads a process can create is limited by the available virtual m
 
 Reducing the thread stack size will not reduce overhead in terms of CPU or performance. Your only limit in this respect is the total available virtual address space given to threads on your platform. Generally you should not change the stack size, because you can't really compute how much you need for an arbitrary thread, as it totally depends on the code run. You would have to analyze the entire code and the resulting disassembly executed by the thread to know how much stack size to use. This is non-trivial.
 
-# "Threads are lightweight"
+#### "Threads are lightweight"
 Threads are "lightweight processes", not "lightweight" themselves as some may claim. They require less resources to create and to do context switching as opposed to processes, but it still is not cheap to have many of them running at the same time.
 
 While thread context switching still involves restoring of [the program counter](http://en.wikipedia.org/wiki/Program_counter), CPU [registers](http://en.wikipedia.org/wiki/Processor_register), and other potential OS data, they do not need the context switch of an [MMU](http://en.wikipedia.org/wiki/Memory_management_unit) unlike processes do, because threads share the same memory. Context switching with threads is less of a problem unless you have many threads.
 
-# Race conditions
+#### Race conditions
 
 Since memory/data is shared among threads in the same process, applications frequently need to deal with [race conditions](http://en.wikipedia.org/wiki/Race_conditions). [Thread Synchronization](http://en.wikipedia.org/wiki/Synchronization_(computer_science\)#Thread_or_process_synchronization) is needed. Typical synchronization mechanisms include [Locks](Locks), [Mutex](Mutex), [Monitors](Monitors) and [Semaphores](Semaphores). These are concurrency constructs used to ensure two threads won't access the same shared data at the same time, thus achieving correctness.
 
 Programming with threads involve hazardous race conditions, deadlocks and livelocks. This is often said to be one of the bad things about threads along with the overhead they bring.
 
-# Summary
+#### Summary
 Threads are good for concurrent CPU heavy work across 1-n processors and cores within a single application/process. This is, because they scale to cores and CPUs thanks to the OS scheduler. For IO heavy work, threads are a nightmare, because that usually involves spawning of multiple threads for shorter periods of time.
 
-### When to use
+##### When to use
 
 * You need plenty of CPU.
 * You keep the threads running for a longer time.
@@ -144,10 +144,10 @@ Green threads are a good choice over native threads if the platform does not pro
 
 The Erlang virtual machine has what might be called ['green processes'](Green Processes) - they are like operating system processes (they do not share state like threads do) but are implemented within the Erlang Run Time System (erts). These are sometimes erroneously cited as green threads.
 
-# Summary
+#### Summary
 Green threads are rarely used nowadays. They provide little use and have their drawbacks.
 
-### When to use
+##### When to use
 * The underlying platform does not provide support for threads.
 * We need to spawn many threads or often.
 * Our code is not thread-safe.
@@ -174,27 +174,27 @@ There are two types of isolates, heavy and light. These two differ dramatically,
 
 Isolates are independent of each other. This means they do not share state as one might guess from the use of [message passing](Message Passing).
 
-# Heavy isolates
+#### Heavy isolates
 Heavy isolates use [threads](Threads) behind the scenes. Typical synchronization mechanisms such as [locks](Locks) and [monitors](Monitors) are not needed nor do they exist in the programmers eyes. Heavy isolates use [message passing](Message Passing) and internally rely on operating system threads. It's up to the implementation to decide what kind of synchronization mechanism to use (e.g. [monitors](Monitors)) and that mechanism may even vary depending on scenarios.
 
 Due to use of [message passing](Message Passing) you are free from [thread related problems](Threads) such as deadlocks and spinlocks. Heavy isolates are essentially a nice implementation on top of native [threads](Threads).
 
-# Light isolates
+#### Light isolates
 Light isolates are different from heavy isolates in the sense that the underlying implementation does not use [threads](Threads). Light isolates are single-threaded, they live on the thread that spawned the light isolate. For example, one may spawn two heavy isolates which both spawn a light isolate and in this case, you would have two native [threads](Threads) both running one light isolate.
 
 Light isolates are very efficient in context switching and to create/kill. And in fact, it is very well possible to create millions of light isolates. This allows for concurrent, real-time, web applications for instance.
 
 Beware that blocking in a light isolate blocks the rest of the isolates on that thread.
 
-# Heavy vs light isolates
+##### Heavy vs light isolates
 Heavy isolates come with some of the benefits and drawbacks of threads. The same applies to light isolates, they come with the problems and benefits of single-threaded evented systems.
 
-### When to use heavy isolates
+##### When to use heavy isolates
 * You need CPU heavy work.
 * You do not need multiple isolates.
 * You are not spawning and killing isolates too often.
 
-### When to use light isolates
+##### When to use light isolates
 * You are IO bound rather than CPU bound.
 * You need several isolates or you spawn/kill them frequently.
 
@@ -202,7 +202,7 @@ If you were to program a game, you should use heavy isolates for the AI. If you 
 
 There is no reason not to use both and in fact, using both at times makes sense.
 
-# Communication
+#### Communication
 As said earlier, isolates rely on [message passing](Message Passing). There is no shared data and communication is done through ports. This communication allows you to also restart parts of the program if something goes wrong and an isolate lives as long as its port(s) are open. The [message passing](Message Passing) is asynchronous.
 
 Here's an example code sample written in Dart:
@@ -225,7 +225,7 @@ The Worker class extends the Isolate class, and when it's instantiated, it calls
 
 We are supplying an anonymous callback function to the `receive`-method. The function receives `message` and `replyTo` arguments. Since the `message` is specified as `var`, the sender can send anything from integers to strings to complex objects. The same API works with light isolates as well.
 
-# Other benefits of isolates
+#### Other benefits of isolates
 Isolates have their own heap. This means that garbage collection can happen per isolate. This solves the big problem of today's garbage collectors which need to pause the entire program to clean the garbage. With isolates, only one isolate needs to be paused while being cleaned allowing the rest of the program to continue. This has huge benefits for UI-centric software where a garbage collector pause would freeze the UI.
 
 It is also a possibility to send messages between isolates on different hosts (called remote isolates), although Dart does not implement this yet.
