@@ -293,16 +293,18 @@ Synchronous communication can be built on top of asynchronous communication by e
 The buffer required in asynchronous communication can cause problems when it is full. A decision has to be made whether to block the sender or whether to discard future messages. If the sender is blocked, it may lead to an unexpected deadlock. If messages are dropped, then communication is no longer reliable.
 
 <a name="TPL"></a>
-[Microsoft's TPL and other asynchronous features] ()
+[Microsoft's TPL and other asynchronous features](http://msdn.microsoft.com/en-us/library/dd997423.aspx)
+
 <a name="GCD"></a>
-[Apple's GCD and blocks] (#GCD)
+##[Apple's GCD and blocks](http://developer.apple.com/library/mac/#featuredarticles/BlocksGCD/_index.html)
+
 <a name="Clojure"></a>
-[Clojure] (#Clojure)
+##[Clojure](http://clojure.org/)
 <a name="Erlang"></a>
-[Erlang] (#Erlang)
+##[Erlang](http://www.erlang.org/)
 <a name="Node.js"></a>
-[Node.js] (#Node.js)
+##[Node.js](http://nodejs.org)
 <a name="gevent"></a>
-[Python's gevent] (#gevent)
+##[Python's gevent](http://www.gevent.org/)
 <a name="WebWorkers"></a>
-[JavaScript Web Workers] (#WebWorkers)
+##[JavaScript Web Workers](https://developer.mozilla.org/en-US/docs/DOM/Using_web_workers)
