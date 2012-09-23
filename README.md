@@ -293,7 +293,7 @@ Synchronous communication can be built on top of asynchronous communication by e
 The buffer required in asynchronous communication can cause problems when it is full. A decision has to be made whether to block the sender or whether to discard future messages. If the sender is blocked, it may lead to an unexpected deadlock. If messages are dropped, then communication is no longer reliable.
 
 <a name="TPL"></a>
-[Microsoft's TPL and other asynchronous features](http://msdn.microsoft.com/en-us/library/dd997423.aspx)
+##[Microsoft's TPL and other asynchronous features](http://msdn.microsoft.com/en-us/library/dd997423.aspx)
 
 <a name="GCD"></a>
 ##[Apple's GCD and blocks](http://developer.apple.com/library/mac/#featuredarticles/BlocksGCD/_index.html)
