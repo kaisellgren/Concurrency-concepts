@@ -22,6 +22,15 @@ This document describes various concurrency, multi-threading, parallel programmi
 * [Semaphores](#Semaphores)
 * [Monitors](#Monitors)
 * [Message Passing](#MessagePassing)
+ 
+#### Higher-Level Frameworks and Languages
+* [Microsoft's TPL and other asynchronous features] (#TPL)
+* [Apple's GCD and blocks] (#GCD)
+* [Clojure] (#Clojure)
+* [Erlang] (#Erlang)
+* [Node.js] (#Node.js)
+* [JavaScript Web Workers] (#WebWorkers)
+
 
 <a name="Processes"></a>
 ## Processes
