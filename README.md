@@ -29,6 +29,7 @@ This document describes various concurrency, multi-threading, parallel programmi
 * [Clojure] (#Clojure)
 * [Erlang] (#Erlang)
 * [Node.js] (#Node.js)
+* [Python gevent] (#gevent)
 * [JavaScript Web Workers] (#WebWorkers)
 
 
@@ -290,3 +291,18 @@ Asynchronous message passing systems deliver a message from sender to receiver, 
 
 Synchronous communication can be built on top of asynchronous communication by ensuring that the sender always wait for an acknowledgement message from the receiver before continuing.
 The buffer required in asynchronous communication can cause problems when it is full. A decision has to be made whether to block the sender or whether to discard future messages. If the sender is blocked, it may lead to an unexpected deadlock. If messages are dropped, then communication is no longer reliable.
+
+<a name="TPL"></a>
+[Microsoft's TPL and other asynchronous features] ()
+<a name="GCD"></a>
+[Apple's GCD and blocks] (#GCD)
+<a name="Clojure"></a>
+[Clojure] (#Clojure)
+<a name="Erlang"></a>
+[Erlang] (#Erlang)
+<a name="Node.js"></a>
+[Node.js] (#Node.js)
+<a name="gevent"></a>
+[Python's gevent] (#gevent)
+<a name="WebWorkers"></a>
+[JavaScript Web Workers] (#WebWorkers)
