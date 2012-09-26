@@ -303,15 +303,74 @@ Starting with the .NET Framework 4, the TPL is the preferred way to write multit
 [Microsoft's TPL and Traditional .NET Framework Asynchronous Programming](http://msdn.microsoft.com/en-us/library/dd997423.aspx)
 
 <a name="GCD"></a>
-##[Apple's GCD and blocks](http://developer.apple.com/library/mac/#featuredarticles/BlocksGCD/_index.html)
+##Apple's GCD and blocks
+
+Grand Central Dispatch (GCD) is an approach to multicore computing that is woven throughout the fabric of OS X version 10.6 Snow Leopard. GCD combines an easy-to-use programming model with highly-efficient system services to simplify the code needed to make best use of multiple processors and improve performance.
+
+The central insight of GCD is shifting the responsibility for managing threads and their execution from applications to the operating system. As a result, programmers can write less code to deal with concurrent operations in their applications, and the system can perform more efficiently.
+
+GCD is implemented as a set of extensions to the C language as well as a new API and runtime engine. While initially inspired by the challenge of multicore computing, these actually solve a more general problem: how to efficiently schedule multiple independent chunks of work. GCD does this using four primary abstractions:
+
+* block Objects
+
+* dispatch queues
+
+* synchronization
+
+* event sources
+
+[Apple's GCD and blocks](http://developer.apple.com/library/mac/#featuredarticles/BlocksGCD/_index.html)
 
 <a name="Clojure"></a>
-##[Clojure](http://clojure.org/)
+
+##Clojure
+
+Clojure is a dynamic programming language that targets the Java Virtual Machine (and the CLR, and JavaScript). It is designed to be a general-purpose language, combining the approachability and interactive development of a scripting language with an efficient and robust infrastructure for multithreaded programming. Clojure is a compiled language - it compiles directly to JVM bytecode, yet remains completely dynamic. Every feature supported by Clojure is supported at runtime. Clojure provides easy access to the Java frameworks, with optional type hints and type inference, to ensure that calls to Java can avoid reflection.
+
+Clojure is a dialect of Lisp, and shares with Lisp the code-as-data philosophy and a macro system. Clojure is predominantly a functional programming language, and features a rich set of immutable, persistent data structures. When mutable state is needed, Clojure offers a software transactional memory system and reactive Agent system that ensure clean, correct, multithreaded designs.
+
+[Clojure](http://clojure.org/)
+
+
 <a name="Erlang"></a>
-##[Erlang](http://www.erlang.org/)
+
+##Erlang
+
+Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability. Some of its uses are in telecoms, banking, e-commerce, computer telephony and instant messaging. Erlang's runtime system has built-in support for concurrency, distribution and fault tolerance.
+
+[Erlang](http://www.erlang.org/)
+
 <a name="Node.js"></a>
+##Node.js
+
+Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+
 ##[Node.js](http://nodejs.org)
+
 <a name="gevent"></a>
-##[Python's gevent](http://www.gevent.org/)
+##Python's gevent
+
+gevent is a coroutine-based Python networking library that uses greenlet to provide a high-level synchronous API on top of the libevent event loop.
+
+Features include:
+
+* Fast event loop based on libevent (epoll on Linux, kqueue on FreeBSD).
+* Lightweight execution units based on greenlet.
+* API that re-uses concepts from the Python standard library (for example there are Events and Queues).
+* Cooperative sockets with SSL support »
+* DNS queries performed through libevent-dns.
+* Monkey patching utility to get 3rd party modules to become cooperative »
+* Fast WSGI server based on libevent-http »
+
+[Python's gevent](http://www.gevent.org/)
+
 <a name="WebWorkers"></a>
+##JavaScript Web Workers
+
+Web Workers provide a simple means for web content to run scripts in background threads.  Once created, a worker can send messages to the spawning task by posting messages to an event handler specified by the creator.
+
+The worker thread can perform tasks without interfering with the user interface.  In addition, they can perform I/O using XMLHttpRequest.
+
+The Worker interface spawns real OS-level threads, and concurrency can cause interesting effects in your code if you aren't careful. However, in the case of web workers, the carefully controlled communication points with other threads means that it's actually very hard to cause concurrency problems.  There's no access to non-thread safe components or the DOM and you have to pass specific data in and out of a thread through serialized objects.  So you have to work really hard to cause problems in your code.
+
 ##[JavaScript Web Workers](https://developer.mozilla.org/en-US/docs/DOM/Using_web_workers)
