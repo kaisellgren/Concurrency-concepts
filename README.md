@@ -345,7 +345,7 @@ Erlang is a programming language used to build massively scalable soft real-time
 
 Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 
-##[Node.js](http://nodejs.org)
+[Node.js](http://nodejs.org)
 
 <a name="gevent"></a>
 ##Python's gevent
@@ -373,4 +373,4 @@ The worker thread can perform tasks without interfering with the user interface.
 
 The Worker interface spawns real OS-level threads, and concurrency can cause interesting effects in your code if you aren't careful. However, in the case of web workers, the carefully controlled communication points with other threads means that it's actually very hard to cause concurrency problems.  There's no access to non-thread safe components or the DOM and you have to pass specific data in and out of a thread through serialized objects.  So you have to work really hard to cause problems in your code.
 
-##[JavaScript Web Workers](https://developer.mozilla.org/en-US/docs/DOM/Using_web_workers)
+[JavaScript Web Workers](https://developer.mozilla.org/en-US/docs/DOM/Using_web_workers)
