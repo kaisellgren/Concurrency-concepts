@@ -293,7 +293,14 @@ Synchronous communication can be built on top of asynchronous communication by e
 The buffer required in asynchronous communication can cause problems when it is full. A decision has to be made whether to block the sender or whether to discard future messages. If the sender is blocked, it may lead to an unexpected deadlock. If messages are dropped, then communication is no longer reliable.
 
 <a name="TPL"></a>
-##[Microsoft's TPL and other asynchronous features](http://msdn.microsoft.com/en-us/library/dd997423.aspx)
+##Microsoft's TPL and other asynchronous framework features
+The Task Parallel Library (TPL) is a set of public types and APIs in the System.Threading and System.Threading.Tasks namespaces in the .NET Framework 4. The purpose of the TPL is to make developers more productive by simplifying the process of adding parallelism and concurrency to applications. The TPL scales the degree of concurrency dynamically to most efficiently use all the processors that are available. In addition, the TPL handles the partitioning of the work, the scheduling of threads on the ThreadPool, cancellation support, state management, and other low-level details. By using TPL, you can maximize the performance of your code while focusing on the work that your program is designed to accomplish. 
+
+Starting with the .NET Framework 4, the TPL is the preferred way to write multithreaded and parallel code. However, not all code is suitable for parallelization; for example, if a loop performs only a small amount of work on each iteration, or it doesn't run for many iterations, then the overhead of parallelization can cause the code to run more slowly. Furthermore, parallelization like any multithreaded code adds complexity to your program execution. Although the TPL simplifies multithreaded scenarios, we recommend that you have a basic understanding of threading concepts, for example, locks, deadlocks, and race conditions, so that you can use the TPL effectively.
+
+[TPL](http://msdn.microsoft.com/en-us/library/dd460717.aspx)
+
+[Microsoft's TPL and Traditional .NET Framework Asynchronous Programming](http://msdn.microsoft.com/en-us/library/dd997423.aspx)
 
 <a name="GCD"></a>
 ##[Apple's GCD and blocks](http://developer.apple.com/library/mac/#featuredarticles/BlocksGCD/_index.html)
