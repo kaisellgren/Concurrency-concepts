@@ -311,7 +311,7 @@ The central insight of GCD is shifting the responsibility for managing threads a
 
 GCD is implemented as a set of extensions to the C language as well as a new API and runtime engine. While initially inspired by the challenge of multicore computing, these actually solve a more general problem: how to efficiently schedule multiple independent chunks of work. GCD does this using four primary abstractions:
 
-* block Objects
+* block objects
 
 * dispatch queues
 
