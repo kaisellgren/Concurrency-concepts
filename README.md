@@ -30,7 +30,7 @@ This document describes various concurrency, multi-threading, parallel programmi
 * [Erlang] (#Erlang)
 * [Node.js] (#Node.js)
 * [Python gevent] (#gevent)
-* [JavaScript Web Workers] (#WebWorkers)
+* [HTML5 Web Workers] (#WebWorkers)
 
 
 <a name="Processes"></a>
@@ -365,7 +365,7 @@ Features include:
 [Python's gevent](http://www.gevent.org/)
 
 <a name="WebWorkers"></a>
-##JavaScript Web Workers
+##HTML5 Web Workers
 
 Web Workers provide a simple means for web content to run scripts in background threads.  Once created, a worker can send messages to the spawning task by posting messages to an event handler specified by the creator.
 
@@ -373,4 +373,6 @@ The worker thread can perform tasks without interfering with the user interface.
 
 The Worker interface spawns real OS-level threads, and concurrency can cause interesting effects in your code if you aren't careful. However, in the case of web workers, the carefully controlled communication points with other threads means that it's actually very hard to cause concurrency problems.  There's no access to non-thread safe components or the DOM and you have to pass specific data in and out of a thread through serialized objects.  So you have to work really hard to cause problems in your code.
 
-[JavaScript Web Workers](https://developer.mozilla.org/en-US/docs/DOM/Using_web_workers)
+Web Workers are part of the HTML5 specification, and exposed by a HTML5 compliant engine. Thus, Web Workers are accessible in client-side JavaScript and other scripting languages such as [Google Dart](http://api.dartlang.org/docs/continuous/dart_html/Worker.html).
+
+[HTML5 Web Workers](https://developer.mozilla.org/en-US/docs/DOM/Using_web_workers)
