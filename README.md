@@ -24,13 +24,13 @@ This document describes various concurrency, multi-threading, parallel programmi
 * [Message Passing](#MessagePassing)
  
 #### Higher-Level Frameworks and Languages
-* [Microsoft's TPL and other asynchronous features] (#TPL)
-* [Apple's GCD and blocks] (#GCD)
-* [Clojure] (#Clojure)
-* [Erlang] (#Erlang)
-* [Node.js] (#Node.js)
-* [Python gevent] (#gevent)
-* [HTML5 Web Workers] (#WebWorkers)
+* [Microsoft's TPL and other asynchronous features](#TPL)
+* [Apple's GCD and blocks](#GCD)
+* [Clojure](#Clojure)
+* [Erlang](#Erlang)
+* [Node.js](#Node.js)
+* [Python gevent](#gevent)
+* [HTML5 Web Workers](#WebWorkers)
 
 
 <a name="Processes"></a>
@@ -293,7 +293,7 @@ Synchronous communication can be built on top of asynchronous communication by e
 The buffer required in asynchronous communication can cause problems when it is full. A decision has to be made whether to block the sender or whether to discard future messages. If the sender is blocked, it may lead to an unexpected deadlock. If messages are dropped, then communication is no longer reliable.
 
 <a name="TPL"></a>
-##Microsoft's TPL and other asynchronous framework features
+## Microsoft's TPL and other asynchronous framework features
 The Task Parallel Library (TPL) is a set of public types and APIs in the System.Threading and System.Threading.Tasks namespaces in the .NET Framework 4. The purpose of the TPL is to make developers more productive by simplifying the process of adding parallelism and concurrency to applications. The TPL scales the degree of concurrency dynamically to most efficiently use all the processors that are available. In addition, the TPL handles the partitioning of the work, the scheduling of threads on the ThreadPool, cancellation support, state management, and other low-level details. By using TPL, you can maximize the performance of your code while focusing on the work that your program is designed to accomplish. 
 
 Starting with the .NET Framework 4, the TPL is the preferred way to write multithreaded and parallel code. However, not all code is suitable for parallelization; for example, if a loop performs only a small amount of work on each iteration, or it doesn't run for many iterations, then the overhead of parallelization can cause the code to run more slowly. Furthermore, parallelization like any multithreaded code adds complexity to your program execution. Although the TPL simplifies multithreaded scenarios, we recommend that you have a basic understanding of threading concepts, for example, locks, deadlocks, and race conditions, so that you can use the TPL effectively.
@@ -303,7 +303,7 @@ Starting with the .NET Framework 4, the TPL is the preferred way to write multit
 [Microsoft's TPL and Traditional .NET Framework Asynchronous Programming](http://msdn.microsoft.com/en-us/library/dd997423.aspx)
 
 <a name="GCD"></a>
-##Apple's GCD and blocks
+## Apple's GCD and blocks
 
 Grand Central Dispatch (GCD) is an approach to multicore computing that is woven throughout the fabric of OS X version 10.6 Snow Leopard. GCD combines an easy-to-use programming model with highly-efficient system services to simplify the code needed to make best use of multiple processors and improve performance.
 
@@ -323,7 +323,7 @@ GCD is implemented as a set of extensions to the C language as well as a new API
 
 <a name="Clojure"></a>
 
-##Clojure
+## Clojure
 
 Clojure is a dynamic programming language that targets the Java Virtual Machine (and the CLR, and JavaScript). It is designed to be a general-purpose language, combining the approachability and interactive development of a scripting language with an efficient and robust infrastructure for multithreaded programming. Clojure is a compiled language - it compiles directly to JVM bytecode, yet remains completely dynamic. Every feature supported by Clojure is supported at runtime. Clojure provides easy access to the Java frameworks, with optional type hints and type inference, to ensure that calls to Java can avoid reflection.
 
@@ -334,21 +334,21 @@ Clojure is a dialect of Lisp, and shares with Lisp the code-as-data philosophy a
 
 <a name="Erlang"></a>
 
-##Erlang
+## Erlang
 
 Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability. Some of its uses are in telecoms, banking, e-commerce, computer telephony and instant messaging. Erlang's runtime system has built-in support for concurrency, distribution and fault tolerance.
 
 [Erlang](http://www.erlang.org/)
 
 <a name="Node.js"></a>
-##Node.js
+## Node.js
 
 Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 
 [Node.js](http://nodejs.org)
 
 <a name="gevent"></a>
-##Python's gevent
+## Python's gevent
 
 gevent is a coroutine-based Python networking library that uses greenlet to provide a high-level synchronous API on top of the libevent event loop.
 
@@ -365,7 +365,7 @@ Features include:
 [Python's gevent](http://www.gevent.org/)
 
 <a name="WebWorkers"></a>
-##HTML5 Web Workers
+## HTML5 Web Workers
 
 Web Workers provide a simple means for web content to run scripts in background threads.  Once created, a worker can send messages to the spawning task by posting messages to an event handler specified by the creator.
 
