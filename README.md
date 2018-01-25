@@ -126,7 +126,7 @@ While thread context switching still involves restoring of [the program counter]
 
 #### Race conditions
 
-Since memory/data is shared among threads in the same process, applications frequently need to deal with [race conditions](https://en.wikipedia.org/wiki/Race_conditions). [Thread Synchronization](https://en.wikipedia.org/wiki/Synchronization_(computer_science)#Thread_or_process_synchronization) is needed. Typical synchronization mechanisms include [Locks](#Locks), [Mutex](#Mutex), [Monitors](#Monitors and [Semaphores](#Semaphores). These are concurrency constructs used to ensure two threads won't access the same shared data at the same time, thus achieving correctness.
+Since memory/data is shared among threads in the same process, applications frequently need to deal with [race conditions](https://en.wikipedia.org/wiki/Race_conditions). [Thread Synchronization](https://en.wikipedia.org/wiki/Synchronization_(computer_science)#Thread_or_process_synchronization) is needed. Typical synchronization mechanisms include [Locks](#Locks), [Mutex](#Mutex), [Monitors](#Monitors) and [Semaphores](#Semaphores). These are concurrency constructs used to ensure two threads won't access the same shared data at the same time, thus achieving correctness.
 
 Programming with threads involve hazardous race conditions, deadlocks and livelocks. This is often said to be one of the bad things about threads along with the overhead they bring.
 
@@ -157,7 +157,7 @@ Green threads can be started much faster on some VMs. They significantly outperf
 
 Green threads are a good choice over native threads if the platform does not provide support for threading. Another reason is that if your code is not thread-safe or if you need to spawn many threads and often since this is cheaper with green threads.
 
-The Erlang virtual machine has what might be called ['green processes'](#Green Processes) - they are like operating system processes (they do not share state like threads do) but are implemented within the Erlang Run Time System (erts). These are sometimes erroneously cited as green threads.
+The Erlang virtual machine has what might be called ['green processes'](#GreenProcesses) - they are like operating system processes (they do not share state like threads do) but are implemented within the Erlang Run Time System (erts). These are sometimes erroneously cited as green threads.
 
 #### Summary
 Green threads are rarely used nowadays. They provide little use and have their drawbacks.
@@ -183,16 +183,16 @@ Inter-process communication works via shared-nothing asynchronous message passin
 <a name="Isolates"></a>
 ## Isolates
 
-Isolates are a concurrency mechanism used in [Google Dart](https://dartlang.org). Isolates are spawned and use [message passing](#Message Passing). They are inspired by Erlang's [green processes](#Green Processes).
+Isolates are a concurrency mechanism used in [Google Dart](https://dartlang.org). Isolates are spawned and use [message passing](#MessagePassing). They are inspired by Erlang's [green processes](#GreenProcesses).
 
 There are two types of isolates, heavy and light. These two differ dramatically, and the programmer has to know which one to use in which scenario. Luckily isolates offer an intuitive API that works the same way for both light and heavy isolates so it is easy to change the type of an isolate at any time.
 
-Isolates are independent of each other. This means they do not share state as one might guess from the use of [message passing](#Message Passing).
+Isolates are independent of each other. This means they do not share state as one might guess from the use of [message passing](#MessagePassing).
 
 #### Heavy isolates
-Heavy isolates use [threads](#Threads) behind the scenes. Typical synchronization mechanisms such as [locks](#Locks) and [monitors](#Monitors) are not needed nor do they exist in the programmers eyes. Heavy isolates use [message passing](#Message Passing) and internally rely on operating system threads. It's up to the implementation to decide what kind of synchronization mechanism to use (e.g. [monitors](#Monitors) and that mechanism may even vary depending on scenarios.
+Heavy isolates use [threads](#Threads) behind the scenes. Typical synchronization mechanisms such as [locks](#Locks) and [monitors](#Monitors) are not needed nor do they exist in the programmers eyes. Heavy isolates use [message passing](#MessagePassing) and internally rely on operating system threads. It's up to the implementation to decide what kind of synchronization mechanism to use (e.g. [monitors](#Monitors) and that mechanism may even vary depending on scenarios.
 
-Due to use of [message passing](#Message Passing) you are free from [thread related problems](#Threads) such as deadlocks and spinlocks. Heavy isolates are essentially a nice implementation on top of native [threads](#Threads).
+Due to use of [message passing](#MessagePassing) you are free from [thread related problems](#Threads) such as deadlocks and spinlocks. Heavy isolates are essentially a nice implementation on top of native [threads](#Threads).
 
 #### Light isolates
 Light isolates are different from heavy isolates in the sense that the underlying implementation does not use [threads](#Threads). Light isolates are single-threaded, they live on the thread that spawned the light isolate. For example, one may spawn two heavy isolates which both spawn a light isolate and in this case, you would have two native [threads](#Threads) both running one light isolate.
@@ -218,7 +218,7 @@ If you were to program a game, you should use heavy isolates for the AI. If you 
 There is no reason not to use both and in fact, using both at times makes sense.
 
 #### Communication
-As said earlier, isolates rely on [message passing](#Message Passing). There is no shared data and communication is done through ports. This communication allows you to also restart parts of the program if something goes wrong and an isolate lives as long as its port(s) are open. The [message passing](#Message Passing) is asynchronous.
+As said earlier, isolates rely on [message passing](#MessagePassing). There is no shared data and communication is done through ports. This communication allows you to also restart parts of the program if something goes wrong and an isolate lives as long as its port(s) are open. The [message passing](#MessagePassing) is asynchronous.
 
 Here's an example code sample written in Dart:
 ```java
